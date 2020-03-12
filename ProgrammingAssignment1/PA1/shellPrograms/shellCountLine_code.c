@@ -1,5 +1,4 @@
 #include "shellPrograms.h"
-#include <stdio.h>
 
 /*
 Count the number of lines in a file
@@ -37,12 +36,11 @@ int shellCountLine_code(char **args)
         fclose(fp);
         free(buffer);
 
-        printf("CSEShell There are %d lines in %s\n",count, args[1]);
+        printf("CSEShell: There are %d lines in %s\n",count, args[1]);
     }else{
         perror("CSEShell");
         return 1;
     }
-
 
     return 1;
 }
