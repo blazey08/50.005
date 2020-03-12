@@ -34,18 +34,21 @@ static int create_daemon()
     if(pid1 > 0) {
         exit(1);
     }else if(pid1 < 0) {
-        perror("fork error");
-        exit(1);
+        perror("CSEShell");
+        return 1;
     }
-    setsid();
+    if(setsid() == -1){
+        perror("CSEShell");
+        return 1;
+    }
     signal(SIGCHLD, SIG_IGN);
     signal(SIGHUP, SIG_IGN);
     pid_t pid2 = fork();
     if(pid2 > 0) {
         exit(0);
     }else if(pid2 < 0){
-        perror("fork error");
-        exit(1);
+        perror("CSEShell");
+        return 1;
     }
     umask(0);
     chdir("/");
