@@ -161,7 +161,7 @@ int shellCD(char **args)
         // to the directory specified in path.
         if (chdir(args[1]) != 0)
         { //use chdir
-            perror("CSEShell:");
+            perror("CSEShell");
         }
     }
 
